@@ -4,20 +4,17 @@ import dk.acto.blackdragon.model.AuthorData;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
+import java.net.MalformedURLException;
+
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
 public class AuthorDataFactoryTest {
 
     @Test(groups = "transform")
-    public void testCreate(ITestContext context) {
+    public void testCreate(ITestContext context) throws MalformedURLException {
 
-        AuthorDataFactory subject = new AuthorDataFactory() {
-            @Override
-            public AuthorData create() {
-                return null;
-            }
-        };
+        AuthorDataFactory subject = new MyAuthorDataFactory();
 
         AuthorData result = subject.create();
         assertNotNull(result);

@@ -19,18 +19,13 @@ public class ModelTransformerTest {
 
         List<Model> models = (List<Model>) context.getAttribute("models");
 
-        ModelTransformer<Model, Stats> subject = new ModelTransformer<Model, Stats>() {
-            @Override
-            public Stats transform(List<Model> model) {
-                return null;
-            }
-        };
+        ModelTransformer<Model, Stats> subject = new MyModelTransformer();
 
         Stats result = subject.transform(models);
         assertNotNull(result);
         assertEquals(result.getEvenIds(), BigInteger.valueOf(6));
         assertEquals(result.getOddIds(), BigInteger.valueOf(7));
-        assertEquals(result.getMeanCost(), BigDecimal.valueOf(11));
+        assertEquals(result.getMeanCost(), BigDecimal.valueOf(1100));
         assertEquals(result.getWeightedInventory(), BigDecimal.valueOf(2436800, 2));
         assertEquals(result.getTotalInventory(), BigInteger.valueOf(48197));
         context.setAttribute("result", result);

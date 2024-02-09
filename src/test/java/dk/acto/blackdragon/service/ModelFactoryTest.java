@@ -14,13 +14,10 @@ public class ModelFactoryTest {
     public void testParse(ITestContext context) {
 
         String data = String.valueOf(context.getAttribute("data"));
+        // Log the value of the data attribute
+        System.out.println("Data attribute value: " + data);
 
-        ModelFactory<Model> subject = new ModelFactory<Model>() {
-            @Override
-            public List<Model> parse(String string) {
-                return null;
-            }
-        };
+        ModelFactory<Model> subject = new MyModelFactory();
 
         List<Model> result = subject.parse(data);
         assertNotNull(result);
